@@ -9,11 +9,24 @@ body {
 
 .header-container {
     .navbar-nav {
+
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+
         .nav-link {
             &.active {
+
                 color: #00BFFF;
                 font-weight: 600;
+
             }
         }
     }
+}
+
+video {
+    position: fixed;
+    top: 100px;
+    left: 300px;
+    width: 100vw;
 }
