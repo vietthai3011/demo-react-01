@@ -1,29 +1,57 @@
 import React from "react";
+import UserInfo from "./UserInfo";
+import DisplayInfo from "./DisplayInfo";
 
-class MyComponent extends React.Component {
-    // jsx
-    state = {
-        name: "Viet Thai",
-        address: "HaiDuong",
-        age: "22",
+// class MyComponent extends React.Component {
+//     state = {
+//         listUser: [
+//             { id: 1, name: "Viet Thai", age: "22" },
+//             { id: 2, name: "Ngo", age: "30" },
+//             { id: 3, name: "Thanh", age: "45" },
+//         ],
+//     };
+
+//     addUser = (user) => {
+//         this.setState({
+//             listUser: [user, ...this.state.listUser],
+//         });
+//     };
+
+//     deleteUser = (id) => {
+//         this.setState({
+//             listUser: [...this.state.listUser.filter((user) => user.id !== id)],
+//         });
+//     };
+//     render() {
+//         return (
+//             <>
+//                 <UserInfo addUser={this.addUser} />
+//                 <DisplayInfo listUser={this.state.listUser} deleteUser={this.deleteUser} />
+//             </>
+//         );
+//     }
+// }
+
+const MyComponent = (props) => {
+    const [listUser, setListUser] = React.useState([
+        { id: 1, name: "Viet Thai", age: "22" },
+        { id: 2, name: "Ngo", age: "30" },
+        { id: 3, name: "Thanh", age: "45" },
+    ]);
+
+    const addUser = (user) => {
+        setListUser([user, ...listUser]);
     };
 
-    handleOnClick(event) {
-        console.log("My name is " + this.state.name);
-    }
-
-    handleOnMouseOver(event) {
-        console.log(event.pageX);
-    }
-    render() {
-        return (
-            <>
-                My name is {this.state.name} and i am from {this.state.address}
-                <button onClick={(event) => this.handleOnClick(event)}>Click me!</button>
-                <button onMouseOver={(event) => this.handleOnMouseOver(event)}>Hover Me</button>
-            </>
-        );
-    }
-}
+    const deleteUser = (id) => {
+        setListUser([...listUser.filter((user) => user.id !== id)]);
+    };
+    return (
+        <>
+            <UserInfo addUser={addUser} />
+            <DisplayInfo listUser={listUser} deleteUser={deleteUser} />
+        </>
+    );
+};
 
 export default MyComponent;
