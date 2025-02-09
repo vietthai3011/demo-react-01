@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const UserInfo = (props) => {
     const [name, setName] = useState("");
@@ -21,6 +21,15 @@ const UserInfo = (props) => {
     const handleOnClick = () => {
         addUser({ name, age, id: Math.floor(Math.random() * 1000) + "-random" });
     };
+
+    console.log("render");
+
+    useEffect(() => {
+        setTimeout(() => {
+            document.title = "Hello";
+        }, 3000);
+        console.log("useEffect");
+    });
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserInfo from "./UserInfo";
 import DisplayInfo from "./DisplayInfo";
 
@@ -42,6 +42,15 @@ const MyComponent = (props) => {
     const addUser = (user) => {
         setListUser([user, ...listUser]);
     };
+
+    useEffect(() => {
+        if (listUser.length === 0) alert("List user is empty");
+
+        setTimeout(() => {
+            document.title = "Hello";
+        }, 3000);
+        console.log("useEffect");
+    }, [listUser]);
 
     const deleteUser = (id) => {
         setListUser([...listUser.filter((user) => user.id !== id)]);

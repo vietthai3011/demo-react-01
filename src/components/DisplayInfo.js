@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import logo from "../logo.svg";
 import style from "./display-info.module.scss";
 
 // class DisplayInfo extends React.Component {
