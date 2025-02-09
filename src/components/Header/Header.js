@@ -40,11 +40,15 @@ const Header = () => {
                         </NavLink>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Setting" id="basic-nav-dropdown">
-                            <NavDropdown.Item>Login</NavDropdown.Item>
-                            <NavDropdown.Item>Logout</NavDropdown.Item>
-                            <NavDropdown.Item>Profile</NavDropdown.Item>
-                        </NavDropdown>
+                        <button className="btn fs-5 fw-semibold px-4">Log in</button>
+                        <button className="btn btn-dark fw-normal px-3">Sign up</button>
+                        {false && (
+                            <NavDropdown title="Setting" id="basic-nav-dropdown">
+                                <NavDropdown.Item>Login</NavDropdown.Item>
+                                <NavDropdown.Item>Logout</NavDropdown.Item>
+                                <NavDropdown.Item>Profile</NavDropdown.Item>
+                            </NavDropdown>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
