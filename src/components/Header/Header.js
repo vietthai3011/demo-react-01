@@ -2,32 +2,48 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Header = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="/">Ngo Viet Thai</Navbar.Brand>
+                <Link to={"/"} className="navbar-brand">
+                    Ngo Viet Thai
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="/" className="nav-link">
-                            {" "}
+                        <NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                `nav-link ${isActive ? "active" : isPending ? "pending" : ""}`
+                            }
+                        >
                             Home
-                        </Link>
-                        <Link to="/users" className="nav-link">
+                        </NavLink>
+                        <NavLink
+                            to="/users"
+                            className={({ isActive, isPending }) =>
+                                `nav-link ${isActive ? "active" : isPending ? "pending" : ""}`
+                            }
+                        >
                             User
-                        </Link>
-                        <Link to="/admins" className="nav-link">
+                        </NavLink>
+                        <NavLink
+                            to="/admins"
+                            className={({ isActive, isPending }) =>
+                                `nav-link ${isActive ? "active" : isPending ? "pending" : ""}`
+                            }
+                        >
                             Admin
-                        </Link>
+                        </NavLink>
                     </Nav>
                     <Nav>
                         <NavDropdown title="Setting" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                            <NavDropdown.Item>Login</NavDropdown.Item>
+                            <NavDropdown.Item>Logout</NavDropdown.Item>
+                            <NavDropdown.Item>Profile</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
