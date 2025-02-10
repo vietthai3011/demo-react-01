@@ -1,4 +1,5 @@
 import ModelCreateUser from "./ModelCrateUser";
+import "./ManageUser.scss";
 
 const ManageUser = (props) => {
     return (
@@ -11,10 +12,9 @@ const ManageUser = (props) => {
                 <div>
                     <button>Add new users</button>
                 </div>
-                <div>
-                    table user
-                    <ModelCreateUser />
-                </div>
+                <div>table user</div>
+
+                <ModelCreateUser />
             </div>
         </div>
     );

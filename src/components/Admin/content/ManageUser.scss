@@ -1,0 +1,35 @@
+.Model-add-user {
+    .img-preview {
+        border: 1px dashed #ccc;
+        height: 150px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ccc;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .label-upload {
+        display: flex;
+        column-gap: 5px;
+        align-items: center;
+        justify-content: left;
+
+        width: fit-content;
+        font-weight: 500;
+        border: 1px solid #ccc;
+        padding: 8px 6px;
+        border-radius: 10px;
+        background-color: #eeeeee;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+    }
+}
