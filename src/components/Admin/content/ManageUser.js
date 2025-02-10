@@ -15,17 +15,17 @@ const ManageUser = (props) => {
     const [dataUpdate, setDataUpdate] = useState({});
 
     const handleClickUpdateUser = (user) => {
+        console.log("check user", user);
+
         setShowModelUpdateUser(true);
         setDataUpdate(user);
-    }
+    };
 
     async function fetchListUser() {
         try {
             const resData = await getAllUser();
 
-            if (resData.DT)
-                setListUser(resData.DT);
-
+            if (resData.DT) setListUser(resData.DT);
         } catch (error) {
             console.error("Lỗi khi fetch dữ liệu:", error);
         }
@@ -54,8 +54,17 @@ const ManageUser = (props) => {
                     <TableUser listUser={listUser} handleClickUpdateUser={handleClickUpdateUser} />
                 </div>
 
-                <ModelCreateUser show={showModelCreateUser} setShow={setShowModelCreateUser} fetchListUser={fetchListUser} />
-                <ModelUpdateUser show={showModelUpdateUser} setShow={setShowModelUpdateUser} dataUpdate={dataUpdate} />
+                <ModelCreateUser
+                    show={showModelCreateUser}
+                    setShow={setShowModelCreateUser}
+                    fetchListUser={fetchListUser}
+                />
+                <ModelUpdateUser
+                    show={showModelUpdateUser}
+                    setShow={setShowModelUpdateUser}
+                    dataUpdate={dataUpdate}
+                    fetchListUser={fetchListUser}
+                />
             </div>
         </div>
     );

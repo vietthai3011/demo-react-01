@@ -1,7 +1,6 @@
 const TableUser = (props) => {
     const { listUser, handleClickUpdateUser } = props;
 
-
     const renderListUser = () => {
         if (listUser.length === 0) {
             return (
@@ -19,8 +18,13 @@ const TableUser = (props) => {
                     <td>{user.role}</td>
                     <td>
                         <button className="btn btn-secondary">View</button>
-                        <button className="btn btn-warning mx-3" onClick={() => handleClickUpdateUser(user)}>Update</button>
-                        <button className="btn btn-danger">view</button>
+                        <button
+                            className="btn btn-warning mx-3"
+                            onClick={() => handleClickUpdateUser(user)}
+                        >
+                            Update
+                        </button>
+                        <button className="btn btn-danger">Delete</button>
                     </td>
                 </tr>
             );
