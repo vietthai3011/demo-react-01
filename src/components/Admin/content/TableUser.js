@@ -1,7 +1,5 @@
-import { useEffect } from "react";
-
 const TableUser = (props) => {
-    const { listUser } = props;
+    const { listUser, handleClickUpdateUser } = props;
 
 
     const renderListUser = () => {
@@ -12,16 +10,16 @@ const TableUser = (props) => {
                 </tr>
             );
         }
-        return listUser.map((item, index) => {
+        return listUser.map((user, index) => {
             return (
                 <tr key={index}>
-                    <th scope="row">{item.id}</th>
-                    <td>{item.username}</td>
-                    <td>{item.email}</td>
-                    <td>{item.role}</td>
+                    <th scope="row">{user.id}</th>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                    <td>{user.role}</td>
                     <td>
                         <button className="btn btn-secondary">View</button>
-                        <button className="btn btn-warning mx-3">Update</button>
+                        <button className="btn btn-warning mx-3" onClick={() => handleClickUpdateUser(user)}>Update</button>
                         <button className="btn btn-danger">view</button>
                     </td>
                 </tr>
