@@ -8,7 +8,17 @@ import {
     SidebarFooter,
     SidebarContent,
 } from "react-pro-sidebar";
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink } from "react-icons/fa";
+import {
+    FaTachometerAlt,
+    FaGem,
+    FaList,
+    FaGithub,
+    FaRegLaughWinkDiReact,
+    FaRegLaughWink,
+} from "react-icons/fa";
+import { DiReact } from "react-icons/di";
+import { Link } from "react-router-dom";
+
 import sidebarBg from "../../assets/bg2.jpg";
 
 const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
@@ -34,6 +44,7 @@ const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                             whiteSpace: "nowrap",
                         }}
                     >
+                        <DiReact size={"3rem"} color={"00bfff"} />
                         Ngo Viet Thai
                     </div>
                 </SidebarHeader>
@@ -42,20 +53,26 @@ const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                     <Menu iconShape="circle">
                         <MenuItem
                             icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">new</span>}
+                            // suffix={<span className="badge red">new</span>}
                         >
-                            dashboard
+                            Dashboard
+                            <Link to="/admins" />
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components</MenuItem>
+                        {/* <MenuItem icon={<FaGem />}> components</MenuItem> */}
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
+                            // suffix={<span className="badge yellow">3</span>}
+                            // icon={<FaRegLaughWink />}
+                            icon={<FaGem />}
+                            title={"Feature"}
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem>
+                                Quản lý users
+                                <Link to="/admins/manage-users" />
+                            </MenuItem>
+                            <MenuItem>Quản lý bài quiz</MenuItem>
+                            <MenuItem>Quản lý câu hỏi</MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>
@@ -68,7 +85,7 @@ const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href="https://github.com/vietthai3011"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
@@ -81,7 +98,7 @@ const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                                     overflow: "hidden",
                                 }}
                             >
-                                viewSource
+                                Viet Thai
                             </span>
                         </a>
                     </div>

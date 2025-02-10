@@ -6,14 +6,14 @@ const HomePage = (props) => {
 
     return (
         <div className="home-page row mt-5">
-            <section class="home-page__content col-6 ">
-                <p class="home-page__category">FORMS, QUIZZES, AND SURVEY</p>
-                <h1 class="home-page__title">Get up to 3.5x more data about them</h1>
-                <p class="home-page__description">
+            <section className="home-page__content col-6 ">
+                <p className="home-page__category">FORMS, QUIZZES, AND SURVEY</p>
+                <h1 className="home-page__title">Get up to 3.5x more data about them</h1>
+                <p className="home-page__description">
                     When your forms break the norm, more people fill them out. Think branded
                     designs, video content, and relevant follow-up questions.
                 </p>
-                <button class="home-page__content-button btn btn-info fs-5 fw-semibold p-2 px-4">
+                <button className="home-page__content-button btn btn-info fs-5 fw-semibold p-2 px-4">
                     Sign up
                 </button>
             </section>
