@@ -2,12 +2,21 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { postCreateNewUser } from "../../../service/apiService";
 
-const ModelCreateUser = () => {
-    const [show, setShow] = useState(false);
+const ModelCreateUser = (props) => {
+    const { show, setShow, fetchListUser } = props;
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+
+        setEmail("");
+        setPassword("");
+        setPreview("");
+        setUsername("");
+        setImage("");
+    };
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +25,10 @@ const ModelCreateUser = () => {
     const [image, setImage] = useState("");
     const [preview, setPreview] = useState("");
 
+    const showInput = () => {
+        document.getElementById("upload-image").click();
+    };
+
     const handleUpload = (e) => {
         if (e.target.files && e.target.files[0] && e.target.files[0].type.includes("image")) {
             setPreview(URL.createObjectURL(e.target.files[0]));
@@ -23,11 +36,48 @@ const ModelCreateUser = () => {
         }
     };
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    const handleSubmit = async () => {
+        // call api
+        const isValidateEmail = validateEmail(email);
+
+        if (!isValidateEmail) {
+            toast.error("Email is not valid");
+            return;
+        }
+
+        if (!password) {
+            toast.error("Password is not valid");
+            return;
+        }
+
+        let resData = await postCreateNewUser(email, password, username, role, image);
+
+        console.log(resData);
+
+        if (resData && resData.EC === 0) {
+            toast.success(resData.EM);
+            handleClose();
+            await fetchListUser();
+        }
+
+        if (resData.EC === 1) {
+            toast.error(resData.EM);
+        }
+    };
+
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
-            </Button>
+            </Button> */}
 
             <Modal
                 show={show}
@@ -107,7 +157,7 @@ const ModelCreateUser = () => {
                             />
                         </div>
 
-                        <div className="col-md-12 img-preview">
+                        <div className="col-md-12 img-preview" onClick={() => showInput()}>
                             {preview ? <img src={preview} /> : <span>Preview image</span>}
                         </div>
                     </form>
@@ -116,7 +166,7 @@ const ModelCreateUser = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => handleSubmit()}>
                         Save
                     </Button>
                 </Modal.Footer>
